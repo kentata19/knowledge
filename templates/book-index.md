@@ -1,6 +1,7 @@
 ---
 title:
 authors: []
+translator:      # 翻訳書のみ
 publisher:
 published:
 isbn:
