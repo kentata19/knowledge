@@ -4,7 +4,7 @@
 
 ## 設計方針
 
-1. **1冊 = 1ディレクトリ**（`books/<slug>/`）。本の情報・読書メモ・引用がそこに閉じる。
+1. **1冊 = 1ディレクトリ**（`books/<書名>/`）。本の情報・読書メモ・引用がそこに閉じる。
 2. **dump先は1ファイルに集約**（`notes.md`）。読みながら追記するだけでよく、書く場所に迷わない。
 3. **本を横断する概念は `topics/` に切り出す**。ここが蓄積の本体。読んだ冊数が増えるほど、「本ごとのメモ」より「概念ごとのノート」に価値が集まる。
 4. **プレーンなMarkdown + Git**。ツールに依存せず、差分が読め、grepできる。
@@ -15,7 +15,7 @@
 ```
 books/                本ごとのメモ
   README.md           全書籍の索引（自動生成）
-  <slug>/
+  <書名>/             ディレクトリ名は日本語の書名（副題は落とす）
     index.md          メタデータ・全体まとめ・読書ログ
     notes.md          章ごとの読書メモ（dumpのメイン）
     quotes.md         そのまま残したい引用
@@ -46,18 +46,18 @@ Claude Codeに本のURL・書名・ISBNのどれかを渡して「追加して�
 手動でやる場合:
 
 ```bash
-slug=your-book-slug
-mkdir -p books/$slug
-cp templates/book-index.md books/$slug/index.md
-cp templates/book-notes.md books/$slug/notes.md
-cp templates/book-quotes.md books/$slug/quotes.md
+book=書名
+mkdir -p "books/$book"
+cp templates/book-index.md "books/$book/index.md"
+cp templates/book-notes.md "books/$book/notes.md"
+cp templates/book-quotes.md "books/$book/quotes.md"
 # index.md のfrontmatterを埋める
 python3 scripts/build-index.py   # books/README.md を更新
 ```
 
 ### 読みながらdumpする
 
-`books/<slug>/notes.md` に章単位で追記する。記法は最小限:
+`books/<書名>/notes.md` に章単位で追記する。記法は最小限:
 
 | 記法 | 意味 |
 | --- | --- |

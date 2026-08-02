@@ -14,7 +14,7 @@ tags: []
 
 ## 出典
 
-- [[books/<slug>/notes.md]] p.?
+- [[books/<書名>/notes.md]] p.?
 
 ## 関連
 
